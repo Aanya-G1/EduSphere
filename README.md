@@ -1,2 +1,3 @@
 # EduSphere
 A Collaborative Learning Platform 
+EduSphere is a JavaFX-based desktop application to provide a centralized, course-specific ecosystem for peer-to-peer academic collaboration. Using an MVC architecture and JDBC for MySQL connectivity, the platform integrates structured resource management with social features like subject-related feeds, automated quiz engines, and database-driven virtual chatrooms. By segmenting users by their specific curriculum, such as B.Tech or BCA, the system ensures high content relevance while offering a built-in rule-based chatbot to assist with general inquiries and platform navigation.
