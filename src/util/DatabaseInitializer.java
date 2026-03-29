@@ -25,23 +25,6 @@ public class DatabaseInitializer {
 			"content TEXT,"+
 			"created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
 			
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS chat_rooms("+
-			"room_id INT AUTO_INCREMENT PRIMARY KEY,"+
-			"room_name VARCHAR(100))");
-			
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS chat_messages("+
-			"message_id INT AUTO_INCREMENT PRIMARY KEY,"+
-			"room_id INT,"+
-			"user_id INT,"+
-			"message TEXT,"+
-			"sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
-			
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS chatbot_rules("+
-			"rule_id INT AUTO_INCREMENT PRIMARY KEY,"+
-			"keyword VARCHAR(100),"+
-			"response TEXT)");
-			
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
