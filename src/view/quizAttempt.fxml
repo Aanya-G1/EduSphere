@@ -1,0 +1,10 @@
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.QuizAttemptController">
+    <Label fx:id="questionLabel" text="Question will appear here"/>
+
+    <RadioButton fx:id="op1" text="Option 1"/>
+    <RadioButton fx:id="op2" text="Option 2"/>
+    <RadioButton fx:id="op3" text="Option 3"/>
+    <RadioButton fx:id="op4" text="Option 4"/>
+
+    <Button text="Next" onAction="#next"/>
+</VBox>
