@@ -6,10 +6,17 @@ public class DatabaseInitializer {
 			Connection conn=DBConnection.getConnection();
 			Statement stmt=conn.createStatement();
 			
-			stmt.executeUpdate("CREATE TABLE IF NOT EXISTS chatbot_rules("+
-			"rule_id INT AUTO_INCREMENT PRIMARY KEY,"+
-			"keyword VARCHAR(100),"+
-			"response TEXT)");
+			stmt.executeUpdate(
+    		"CREATE TABLE IF NOT EXISTS chatbot_rules (" +
+        	"rule_id INT AUTO_INCREMENT PRIMARY KEY," +
+        	"course VARCHAR(100)," +
+        	"subject VARCHAR(100)," +
+        	"category VARCHAR(100)," +
+        	"keywords TEXT," +
+        	"response TEXT" +
+    		")"
+			);
+
 			
 			
 		}
