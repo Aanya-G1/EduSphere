@@ -1,0 +1,12 @@
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.QuizController">
+    <TextField fx:id="titleField" promptText="Quiz Title"/>
+    <TextField fx:id="qField" promptText="Question"/>
+    <TextField fx:id="o1" promptText="Option 1"/>
+    <TextField fx:id="o2" promptText="Option 2"/>
+    <TextField fx:id="o3" promptText="Option 3"/>
+    <TextField fx:id="o4" promptText="Option 4"/>
+    <TextField fx:id="correct" promptText="Correct Answer (1-4)"/>
+
+    <Button text="Add Question" onAction="#addQuestion"/>
+    <Button text="Save Quiz" onAction="#saveQuiz"/>
+</VBox>
