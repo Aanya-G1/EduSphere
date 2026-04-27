@@ -8,18 +8,20 @@ import com.edusphere.database.DBConnection;
 import com.edusphere.model.User;
 
 public class UserController {
+
     public boolean registerUser(User user) {
+
+        System.out.println("➡ registerUser() called");
 
         try {
             Connection con = DBConnection.getConnection();
 
             if (con == null) {
-                System.out.println("Database connection failed!");
+                System.out.println("❌ DB Connection NULL");
                 return false;
             }
 
             String sql = "INSERT INTO users (name, email, password, course) VALUES (?, ?, ?, ?)";
-
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, user.getName());
@@ -29,31 +31,30 @@ public class UserController {
 
             int result = ps.executeUpdate();
 
-            if (result > 0) {
-                System.out.println("User registered successfully!");
-                return true;
-            } else {
-                System.out.println("Registration failed!");
-                return false;
-            }
+            System.out.println("✔ Rows inserted = " + result);
+
+            return result > 0;
 
         } catch (Exception e) {
+            System.out.println("❌ Error in registerUser");
             e.printStackTrace();
             return false;
         }
     }
-    public boolean loginUser(String email, String password) {
+
+    public User loginUser(String email, String password) {
+
+        System.out.println("➡ loginUser() called");
 
         try {
             Connection con = DBConnection.getConnection();
 
             if (con == null) {
-                System.out.println("Database connection failed!");
-                return false;
+                System.out.println("❌ DB Connection NULL");
+                return null;
             }
 
-            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-
+            String sql = "SELECT * FROM users WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, email);
@@ -62,16 +63,19 @@ public class UserController {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Login successful!");
-                return true;
-            } else {
-                System.out.println("Invalid email or password!");
-                return false;
+                return new User(
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("course")
+                );
             }
 
         } catch (Exception e) {
+            System.out.println("❌ Error in loginUser");
             e.printStackTrace();
-            return false;
         }
+
+        return null;
     }
 }

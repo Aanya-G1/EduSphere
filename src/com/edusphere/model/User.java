@@ -1,5 +1,7 @@
 package com.edusphere.model;
+
 public class User {
+
     private int id;
     private String name;
     private String email;
@@ -12,9 +14,9 @@ public class User {
         this.password = password;
         this.course = course;
     }
+
     public String getName() { return name; }
     public String getEmail() { return email; }
     public String getPassword() { return password; }
     public String getCourse() { return course; }
-
 }

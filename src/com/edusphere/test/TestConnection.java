@@ -9,14 +9,13 @@ public class TestConnection {
 
         UserController uc = new UserController();
 
-        // REGISTER TEST
         User user = new User("Drishti", "drishti@gmail.com", "1234", "B.Tech");
 
         boolean reg = uc.registerUser(user);
-        System.out.println("Registration: " + reg);
+        System.out.println("Registration = " + reg);
 
-        // LOGIN TEST
-        boolean login = uc.loginUser("drishti@gmail.com", "1234");
-        System.out.println("Login: " + login);
+        User login = uc.loginUser("drishti@gmail.com", "1234");
+
+        System.out.println("Login = " + (login != null));
     }
 }
