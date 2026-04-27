@@ -11,13 +11,13 @@ public class UserController {
 
     public boolean registerUser(User user) {
 
-        System.out.println("➡ registerUser() called");
+        System.out.println("registerUser() called");
 
         try {
             Connection con = DBConnection.getConnection();
 
             if (con == null) {
-                System.out.println("❌ DB Connection NULL");
+                System.out.println(" DB Connection NULL");
                 return false;
             }
 
@@ -31,12 +31,12 @@ public class UserController {
 
             int result = ps.executeUpdate();
 
-            System.out.println("✔ Rows inserted = " + result);
+            System.out.println(" Rows inserted = " + result);
 
             return result > 0;
 
         } catch (Exception e) {
-            System.out.println("❌ Error in registerUser");
+            System.out.println(" Error in registerUser");
             e.printStackTrace();
             return false;
         }
@@ -44,13 +44,13 @@ public class UserController {
 
     public User loginUser(String email, String password) {
 
-        System.out.println("➡ loginUser() called");
+        System.out.println(" loginUser() called");
 
         try {
             Connection con = DBConnection.getConnection();
 
             if (con == null) {
-                System.out.println("❌ DB Connection NULL");
+                System.out.println(" DB Connection NULL");
                 return null;
             }
 
@@ -72,7 +72,7 @@ public class UserController {
             }
 
         } catch (Exception e) {
-            System.out.println("❌ Error in loginUser");
+            System.out.println(" Error in loginUser");
             e.printStackTrace();
         }
 

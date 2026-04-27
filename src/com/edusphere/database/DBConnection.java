@@ -15,14 +15,14 @@ public class DBConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("✔ DB Connected Successfully");
+            System.out.println(" DB Connected Successfully");
             return con;
 
         } catch (ClassNotFoundException e) {
-            System.out.println("❌ MySQL Driver not found");
+            System.out.println(" MySQL Driver not found");
             e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("❌ DB Connection failed");
+            System.out.println(" DB Connection failed");
             e.printStackTrace();
         }
 
