@@ -9,15 +9,14 @@ import com.edusphere.model.User;
 
 public class UserController {
 
+    // REGISTER USER
     public boolean registerUser(User user) {
-
-        System.out.println("registerUser() called");
 
         try {
             Connection con = DBConnection.getConnection();
 
             if (con == null) {
-                System.out.println(" DB Connection NULL");
+                System.out.println("DB Connection NULL");
                 return false;
             }
 
@@ -31,26 +30,22 @@ public class UserController {
 
             int result = ps.executeUpdate();
 
-            System.out.println(" Rows inserted = " + result);
-
             return result > 0;
 
         } catch (Exception e) {
-            System.out.println(" Error in registerUser");
             e.printStackTrace();
             return false;
         }
     }
 
+    // LOGIN USER (IMPORTANT FIX)
     public User loginUser(String email, String password) {
-
-        System.out.println(" loginUser() called");
 
         try {
             Connection con = DBConnection.getConnection();
 
             if (con == null) {
-                System.out.println(" DB Connection NULL");
+                System.out.println("DB Connection NULL");
                 return null;
             }
 
@@ -64,6 +59,7 @@ public class UserController {
 
             if (rs.next()) {
                 return new User(
+                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
@@ -72,7 +68,6 @@ public class UserController {
             }
 
         } catch (Exception e) {
-            System.out.println(" Error in loginUser");
             e.printStackTrace();
         }
 

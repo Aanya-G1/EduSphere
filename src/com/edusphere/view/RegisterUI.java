@@ -2,15 +2,11 @@ package com.edusphere.view;
 
 import com.edusphere.controller.UserController;
 import com.edusphere.model.User;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -19,7 +15,8 @@ public class RegisterUI extends Application {
     @Override
     public void start(Stage stage) {
 
-        Label title = new Label("User Registration");
+        Label title = new Label("Create Account");
+        title.setStyle("-fx-font-size: 26px; -fx-font-weight: bold;");
 
         TextField nameField = new TextField();
         nameField.setPromptText("Enter Name");
@@ -34,22 +31,18 @@ public class RegisterUI extends Application {
         courseField.setPromptText("Enter Course");
 
         Button registerBtn = new Button("Register");
+        registerBtn.setPrefWidth(250);
+
+        Hyperlink loginLink = new Hyperlink("Already have an account? Login");
 
         registerBtn.setOnAction(e -> {
             try {
-                String name = nameField.getText();
-                String email = emailField.getText();
-                String password = passwordField.getText();
-                String course = courseField.getText();
-
-                if (name.isEmpty() || email.isEmpty() || password.isEmpty() || course.isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText("Please fill all fields!");
-                    alert.show();
-                    return;
-                }
-
-                User user = new User(name, email, password, course);
+                User user = new User(
+                        nameField.getText(),
+                        emailField.getText(),
+                        passwordField.getText(),
+                        courseField.getText()
+                );
 
                 UserController controller = new UserController();
                 boolean success = controller.registerUser(user);
@@ -58,15 +51,15 @@ public class RegisterUI extends Application {
 
                 if (success) {
                     alert.setContentText("Registration Successful!");
-                    nameField.clear();
-                    emailField.clear();
-                    passwordField.clear();
-                    courseField.clear();
+                    alert.showAndWait();
+
+                    stage.close();
+                    new LoginUI().start(new Stage());
+
                 } else {
                     alert.setContentText("Registration Failed!");
+                    alert.show();
                 }
-
-                alert.show();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -77,11 +70,29 @@ public class RegisterUI extends Application {
             }
         });
 
-        VBox root = new VBox(12);
-        root.setPadding(new Insets(20));
-        root.getChildren().addAll(title, nameField, emailField, passwordField, courseField, registerBtn);
+        loginLink.setOnAction(e -> {
+            try {
+                stage.close();
+                new LoginUI().start(new Stage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
-        Scene scene = new Scene(root, 400, 350);
+        VBox root = new VBox(15);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(30));
+        root.getChildren().addAll(
+                title,
+                nameField,
+                emailField,
+                passwordField,
+                courseField,
+                registerBtn,
+                loginLink
+        );
+
+        Scene scene = new Scene(root, 400, 450);
 
         stage.setTitle("EduSphere Register");
         stage.setScene(scene);

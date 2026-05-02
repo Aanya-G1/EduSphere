@@ -6,12 +6,9 @@ import com.edusphere.session.Session;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,7 +17,8 @@ public class LoginUI extends Application {
     @Override
     public void start(Stage stage) {
 
-        Label title = new Label("User Login");
+        Label title = new Label("Login to EduSphere");
+        title.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
 
         TextField emailField = new TextField();
         emailField.setPromptText("Enter Email");
@@ -29,48 +27,63 @@ public class LoginUI extends Application {
         passwordField.setPromptText("Enter Password");
 
         Button loginBtn = new Button("Login");
+        loginBtn.setPrefWidth(200);
+
+        Hyperlink registerLink = new Hyperlink("New user? Register here");
 
         loginBtn.setOnAction(e -> {
-            try {
-                String email = emailField.getText();
-                String password = passwordField.getText();
 
-                if (email.isEmpty() || password.isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText("Please fill all fields!");
-                    alert.show();
-                    return;
-                }
+            String email = emailField.getText();
+            String password = passwordField.getText();
 
-                UserController controller = new UserController();
-                User user = controller.loginUser(email, password);
+            if (email.isEmpty() || password.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("Please fill all fields!");
+                alert.show();
+                return;
+            }
+
+            UserController controller = new UserController();
+            User user = controller.loginUser(email, password);
+
+            if (user != null) {
+
+                Session.currentUser = user;
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Welcome " + user.getName());
+                alert.showAndWait();
 
-                if (user != null) {
-                    Session.currentUser = user;
-                    System.out.println("Logged in user: " + Session.currentUser.getName());
-                    alert.setContentText("Welcome " + user.getName());
-                } else {
-                    alert.setContentText("Invalid Email or Password");
+                stage.close();
+
+                try {
+                    new DashboardUI().start(new Stage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
 
-                alert.show();
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-
+            } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Error: " + ex.getMessage());
+                alert.setContentText("Invalid Email or Password");
                 alert.show();
             }
         });
 
-        VBox root = new VBox(12);
-        root.setPadding(new Insets(20));
-        root.getChildren().addAll(title, emailField, passwordField, loginBtn);
+        registerLink.setOnAction(e -> {
+            stage.close();
+            try {
+                new RegisterUI().start(new Stage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
-        Scene scene = new Scene(root, 350, 250);
+        VBox root = new VBox(15);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(30));
+        root.getChildren().addAll(title, emailField, passwordField, loginBtn, registerLink);
+
+        Scene scene = new Scene(root, 400, 350);
 
         stage.setTitle("EduSphere Login");
         stage.setScene(scene);
