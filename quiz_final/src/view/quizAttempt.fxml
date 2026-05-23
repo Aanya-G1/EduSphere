@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.QuizAttemptController" style="-fx-background-color: #CAF0F8">
+	<top>
+		<HBox alignment="CENTER" style="-fx-background-color: #FFF9F0" spacing="20">
+			<Label fx:id="quizTitle" text="Quiz Title">
+				<font>
+					<Font name="System Bold" size="18.0" />
+				</font>
+			</Label>
+			<Region HBox.hgrow="ALWAYS"/>
+			<Label fx:id="timerLabel" text="Time Left: 00:00" style="-fx-text-fill: red;">
+				<font>
+					<Font name="System Bold" size="16.0" />
+				</font>
+			</Label>
+		</HBox>
+	</top>
+	<center>
+		<VBox style="-fx-background-color:#FCF7DF; -fx-border-color:white; -fx-border-width:5;" maxWidth="600" minWidth="600" spacing="20">
+			<Label fx:id="questionNumber" text="Question 1 of 10" style="-fx-text-fill: #555555;">
+				<font>
+					<Font name="System Bold" size="13.0" />
+				</font>
+			</Label>
+			<Label fx:id="questionLabel" text="Question will appear here" wrapText="true">
+				<font>
+					<Font name="System Bold" size="16.0" />
+				</font>
+			</Label>
+			<VBox spacing="10" style="-fx-padding: 10;">
+				<RadioButton fx:id="op1" text="Option 1"/>
+				<RadioButton fx:id="op2" text="Option 2"/>
+				<RadioButton fx:id="op3" text="Option 3"/>
+				<RadioButton fx:id="op4" text="Option 4"/>
+			</VBox>
+			<HBox alignment="CENTER">
+				<Button fx:id="nextBtn" text="Next" onAction="#nextQuestion" style="-fx-background-color: white; -fx-background-radius: 15;" prefWidth="150" prefHeight="45"/>
+			</HBox>
+		</VBox>
+	</center>
+</BorderPane>
