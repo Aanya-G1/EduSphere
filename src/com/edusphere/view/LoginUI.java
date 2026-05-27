@@ -91,6 +91,9 @@ public class LoginUI extends Application {
     }
 
     public static void main(String[] args) {
+
+        util.DatabaseInitializer.initialize();
+
         launch(args);
     }
 }
