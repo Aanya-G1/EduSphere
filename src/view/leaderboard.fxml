@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LeaderboardController" style="-fx-background-color: #CAF0F8">
+	<top>
+	<Button fx:id="backBtn" text="← Back" onAction="#handleBack"
+				style="-fx-background-color: #FFF9E6; 
+					   -fx-text-fill: #3c3c3c; 
+					   -fx-font-family: 'Segoe UI'; 
+					   -fx-font-weight: bold; 
+					   -fx-font-size: 14px; 
+					   -fx-background-radius: 20; 
+					   -fx-padding: 6 14 6 14;"/>
+	</top>
+	<center>
+		<VBox style="-fx-background-color:#FCF7DF; -fx-border-color:white; -fx-border-width:5;" maxWidth="700" minWidth="700" spacing="15">
+			<Label fx:id="quizTitle" text="Leaderboard">
+				<font>
+					<Font name="System Bold" size="20.0" />
+				</font>
+			</Label>
+			<Label text="Top Scorers" style="-fx-text-fill: #555555;">
+				<font>
+					<Font name="System Bold" size="14.0" />
+				</font>
+			</Label>
+			<ScrollPane fitToWidth="true" prefHeight="500" style="-fx-background-color: transparent;">
+				<VBox fx:id="leaderboardContainer" spacing="8"/>
+			</ScrollPane>
+		</VBox>
+	</center>
+</BorderPane>

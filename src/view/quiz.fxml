@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.QuizController" style="-fx-background-color: #CAF0F8">
+	<top>
+		<HBox alignment="CENTER" style="-fx-background-color:#FFF9F0" spacing="10">
+			<Button fx:id="backBtn" text="←" onAction="#handleBack"
+                    style="-fx-background-color: #FFF9E6; 
+                           -fx-text-fill: #3c3c3c; 
+                           -fx-font-family: 'Segoe UI'; 
+                           -fx-font-weight: bold; 
+                           -fx-font-size: 12px; 
+                           -fx-background-radius: 20; 
+                           -fx-padding: 4 10 4 10;"/>
+			<Label text="Filter by Subject:">
+				<font>
+					<Font name="System Bold" size="13.0" />
+				</font>
+			</Label>
+			<ChoiceBox fx:id="subjectFilter" style="-fx-background-color: white"/>
+		</HBox>
+	</top>
+	<left>
+		<MenuBar>
+			<Menu text="Quizzes">
+				<MenuItem fx:id="createQuizMenu" text="Create Quiz" onAction="#openCreateQuiz"/>
+				<MenuItem fx:id="myQuizzesMenu" text="My Quizzes" onAction="#openMyQuizzes"/>
+			</Menu>
+		</MenuBar>
+	</left>
+	<center>
+		<ScrollPane fitToWidth="true" maxWidth="700" style="-fx-background-color:transparent;">
+			<VBox fx:id="quizContainer" style="-fx-background-color: #F2D965;-fx-padding: 20; -fx-min-height: 800;" spacing="10" alignment="CENTER"/>
+		</ScrollPane>
+	</center>
+</BorderPane>

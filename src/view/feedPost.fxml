@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.FeedPostController" spacing="20" style="-fx-background-color: #F2D965 ;-fx-border-color:white; -fx-border-width:5;-fx-padding: 5;-fx-min-height: 800;">
+					<HBox spacing="20"> 
+						<Label fx:id="userId" text="User ID">
+							<font>
+						        <Font name="System Bold" size="13.0" />
+						    </font>
+						</Label>
+						<Region HBox.hgrow="ALWAYS" />
+						<Label fx:id="uploadTime" text="Uploaded At">
+							<font>
+					        	<Font name="System Bold" size="13.0" />
+					    	</font>
+						</Label>
+					</HBox>
+					<Label text="Subject">
+						<font>
+							<Font name="System Bold" size="13.0" />
+						</font>
+					</Label>
+					<Label fx:id="postSub" />
+					<TextArea fx:id="postContent" wrapText="true" editable="false" prefHeight="400" style="-fx-background-color: white;">
+						<font>
+							<Font size="16.0"/>
+						</font>
+					</TextArea>
+					<Label text="Attached Notes">
+						<font>
+							<Font name="System Bold" size="13.0" />
+						</font>
+					</Label>
+					<VBox spacing="5" style="-fx-background-color: #F5EFEB; -fx-padding: 10;">
+				        <Label text="Attached Files:" style="-fx-font-weight: bold;" />
+				        <HBox alignment="CENTER_LEFT" spacing="10">
+				            <ListView fx:id="filesList" prefHeight="100"/>
+				            <Region HBox.hgrow="ALWAYS" />
+				            <Button fx:id="downloadBtn" text="DOWNLOAD" onAction="#downloadFiles"/>
+				        </HBox>
+				    </VBox>
+				    <VBox spacing="5">
+					    <HBox alignment="CENTER" style="-fx-background-color:#FFF9F0" spacing="10">
+							<TextField fx:id="comment" promptText="write comment...." HBox.hgrow="ALWAYS"/>
+							<Button fx:id="commentBtn" text="Post" onAction="#addComment"/>
+						</HBox>
+						<ScrollPane fitToWidth="true" maxHeight="10">
+				    		<VBox fx:id="commentBox" spacing="5" maxHeight="10"/>
+				    	</ScrollPane>
+				    </VBox>
+</VBox>
