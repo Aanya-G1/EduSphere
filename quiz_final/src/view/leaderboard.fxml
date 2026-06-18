@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LeaderboardController" style="-fx-background-color: #CAF0F8">
+	<center>
+		<VBox style="-fx-background-color:#FCF7DF; -fx-border-color:white; -fx-border-width:5;" maxWidth="700" minWidth="700" spacing="15">
+			<Label fx:id="quizTitle" text="Leaderboard">
+				<font>
+					<Font name="System Bold" size="20.0" />
+				</font>
+			</Label>
+			<Label text="Top Scorers" style="-fx-text-fill: #555555;">
+				<font>
+					<Font name="System Bold" size="14.0" />
+				</font>
+			</Label>
+			<ScrollPane fitToWidth="true" prefHeight="500" style="-fx-background-color: transparent;">
+				<VBox fx:id="leaderboardContainer" spacing="8"/>
+			</ScrollPane>
+		</VBox>
+	</center>
+</BorderPane>

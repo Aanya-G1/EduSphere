@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controller.QuizCardController" spacing="10" style="-fx-background-color: #F2D965; -fx-border-color: white; -fx-border-width: 5; -fx-padding: 15;">
+	<HBox spacing="20">
+		<Label fx:id="quizTitle" text="Quiz Title">
+			<font>
+				<Font name="System Bold" size="16.0" />
+			</font>
+		</Label>
+		<Region HBox.hgrow="ALWAYS" />
+		<Label fx:id="quizSubject">
+			<font>
+				<Font name="System Bold" size="13.0" />
+			</font>
+		</Label>
+	</HBox>
+	<Label fx:id="quizCreator" style="-fx-text-fill: #555555;"/>
+	<HBox spacing="10">
+		<Button fx:id="attemptBtn" text="Attempt Quiz" onAction="#attemptQuiz" style="-fx-background-color: #99C3E4; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+		<Button fx:id="leaderboardBtn" text="Leaderboard" onAction="#openLeaderboard" style="-fx-background-color: white; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+	</HBox>
+</VBox>
